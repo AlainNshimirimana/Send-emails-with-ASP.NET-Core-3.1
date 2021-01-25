@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Send_Emails.Settings;
+using Send_Emails.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace Send_Emails
         {
             services.AddControllers();
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, Services.MailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
